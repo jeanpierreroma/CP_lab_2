@@ -1,37 +1,15 @@
 package kindsOfAnimals;
 
-public abstract class Animals implements Actions{
-
-    public static final int MAX_AGE_MOLLUSCA = 100;
-    public static final int MAX_AGE_CHORDATA = 50;
-    public static final int MAX_AGE_Arthropoda = 70;
-
-    private String name;
-    private int age;
-    private int sizeOfAnimal;
-
-    public String getName() {
-        return name;
-    }
-
+public abstract class Animals{
+    private final String name;
+    private final int age;
+    private final int sizeOfAnimal;
     public int getAge() {
         return age;
     }
 
     public int getSizeOfAnimal() {
         return sizeOfAnimal;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    protected void setSizeOfAnimal(int sizeOfAnimal) {
-        this.sizeOfAnimal = sizeOfAnimal;
     }
 
     public Animals(String name, int age, int sizeOfAnimal) {
@@ -49,5 +27,11 @@ public abstract class Animals implements Actions{
             throw new IllegalArgumentException("Розмір тварини не може бути від'ємний!");
         else
             this.sizeOfAnimal = sizeOfAnimal;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%-15s%-15s%-15s%-15s%-15s", name, age, sizeOfAnimal,
+                super.getClass().getSuperclass().getSimpleName(), super.getClass().getSimpleName());
     }
 }

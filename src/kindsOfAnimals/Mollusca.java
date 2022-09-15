@@ -1,23 +1,14 @@
 package kindsOfAnimals;
 
 public abstract class Mollusca extends Animals {
-    public Mollusca(String name, int age, int sizeOfAnimal) {
+    private final boolean isPredator;
+    public Mollusca(String name, int age, int sizeOfAnimal, boolean isPredator) {
         super(name, age, sizeOfAnimal);
-        if(age >= MAX_AGE_MOLLUSCA) {
-            throw new IllegalArgumentException("Максимальний вік молюсків 100 років");
-        }
+        this.isPredator = isPredator;
     }
 
     @Override
-    public String getInfo() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(super.getName()).append("\t\t");
-        stringBuilder.append(super.getAge()).append("\t\t");
-        stringBuilder.append(super.getSizeOfAnimal()).append("\t\t");
-        stringBuilder.append(super.getClass().getSuperclass().getSimpleName()).append("\t");
-        stringBuilder.append(super.getClass().getSimpleName()).append("\t");
-
-        return stringBuilder.toString();
+    public String toString() {
+        return super.toString() + String.format("%-20s", "Predator: " + isPredator);
     }
-
 }

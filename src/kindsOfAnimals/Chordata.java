@@ -2,18 +2,14 @@ package kindsOfAnimals;
 
 public abstract class Chordata extends Animals {
 
-    public Chordata(String name, int age, int sizeOfAnimal) {
+    private final int countOfLegs;
+    public Chordata(String name, int age, int sizeOfAnimal, int countOfLegs) {
         super(name, age, sizeOfAnimal);
+        this.countOfLegs = countOfLegs;
     }
-    @Override
-    public String getInfo() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(super.getName()).append("\t\t");
-        stringBuilder.append(super.getAge()).append("\t\t");
-        stringBuilder.append(super.getSizeOfAnimal()).append("\t\t");
-        stringBuilder.append(super.getClass().getSuperclass().getSimpleName()).append("\t");
-        stringBuilder.append(super.getClass().getSimpleName()).append("\t");
 
-        return stringBuilder.toString();
+    @Override
+    public String toString() {
+        return super.toString() + String.format("%-20s", "Legs: " + countOfLegs);
     }
 }

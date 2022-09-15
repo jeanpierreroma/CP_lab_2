@@ -5,10 +5,10 @@ import java.util.ArrayList;
 
 public class PetStore {
 
-    private int capacityOfAnimals;
+    private final int capacityOfAnimals;
     private int countOfAnimal = 0;
     private static int onlyOnePetStore = 0;
-    private ArrayList<Aquarium> allAquariums;
+    private final ArrayList<Aquarium> allAquariums;
 
     public ArrayList<Aquarium> getAllAquariums() {
         return allAquariums;
@@ -39,25 +39,14 @@ public class PetStore {
         return res;
     }
 
-    //Пізніше реалізувати
-    public boolean deleteAnimal(Animals animals) {
-        return false;
-    }
-
-    public void printInfo(ArrayList<Aquarium> all) {
+    public static void printInfo(ArrayList<Aquarium> all) {
         //Назва тварини   Вік тварини   Розмір тварини   Батьківський тип   Тип тварини   Розмір акваріума
-        StringBuilder str = new StringBuilder("Name\t\t\tAge\tAnimal size\tParent type\tAnimal type\tAquarium size\n");
-        for (int i = 0; i < all.size(); i++) {
-            Aquarium tmp_aquarium = all.get(i);
-            Animals tmp_animal = tmp_aquarium.getAnimal();
-
-            str.append(tmp_animal.getInfo());
-            str.append("\t\t");
-            str.append(tmp_aquarium.getSize());
-            str.append("\n");
+        StringBuilder str = new StringBuilder(String.format("\n%-15s%-15s%-15s%-15s%-15s%-15s%-20s\n",
+                "Name", "Age", "Animal size", "Parent type", "Animal type", "Type features", "Aquarium size"));
+        for (Aquarium aquarium : all) {
+            str.append(aquarium.getAnimal().toString());
+            str.append(String.format("%-15s\n", aquarium.getSize()));
         }
         System.out.println(str);
-
-
     }
 }
